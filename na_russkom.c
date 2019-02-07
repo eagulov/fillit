@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   na_russkom.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/07 12:18:24 by eagulov           #+#    #+#             */
+/*   Updated: 2019/02/07 12:18:48 by eagulov          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 static int		ft_is_legal(t_tetr *t, char **map, int x, int y, int storona)
@@ -6,7 +18,7 @@ static int		ft_is_legal(t_tetr *t, char **map, int x, int y, int storona)
 		return (1);
 	if (x + t->massiv[2].x < 0 || y + t->massiv[2].y < 0)
 		return (1);
-	if (x +t->massiv[3].x < 0 || y + t->massiv[3].y < 0)
+	if (x + t->massiv[3].x < 0 || y + t->massiv[3].y < 0)
 		return (1);
 	if (x + t->massiv[1].x > (storona - 1) || y + t->massiv[1].y > (storona - 1))
 		return (1);

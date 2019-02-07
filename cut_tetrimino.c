@@ -44,9 +44,9 @@ void    get_coords(t_coord *first_hash, t_coord *massiv, int *j, int i)
 
 void    cut_tetrimino(t_tetr *list, char *buf)
 {
-    int        i;//переменная для итерации по нашей карте(тетрамино)
-    int        j;// -|- по нашему massiv в котором будут находиться наши #
-    t_coord    *first_hash;//локальная структура
+    int     i;//переменная для итерации по нашей карте(тетрамино)
+    int     j;// -|- по нашему massiv в котором будут находиться наши #
+    t_coord *first_hash;//локальная структура
     t_coord *massiv;// структура куда будут записаны наши найденные #(маленькая карта)
 
     i = 0;
@@ -62,4 +62,5 @@ void    cut_tetrimino(t_tetr *list, char *buf)
 		++i;
 	}
 	list->massiv = massiv;
+    free(first_hash);
 }

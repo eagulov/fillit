@@ -6,11 +6,38 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 19:22:21 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/01 18:20:15 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/07 12:04:19 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int check_hash(char *buf)
+{
+	int index;
+	int cnt;
+
+	index = 0;
+	cnt = 0;
+	while (index < 21)
+	{
+		if (buf[index] == '#')
+		{
+			if (buf[index + 1] == '#')
+				cnt++;
+			if (buf[index - 1] == '#')
+				cnt++;
+			if (buf[index + 5] == '#')
+				cnt++;
+			if (buf[index - 5] == '#')
+				cnt++;
+		}
+		index++;
+	}
+	if (cnt == 6 || cnt == 8)
+		return (1);
+	return (-1);
+}
 
 int	check_symbols(char *buf)
 {
@@ -49,32 +76,6 @@ int	check_cnt_symb(char *buf)
 		if (cnt_hash == 4 && cnt_dot == 12)
 			return (1);
 	}
-	return (-1);
-}
-
-
-
-int check_hash(char *buf)
-{
-	int index = 0;
-	int cnt = 0;
-	while (index < 21)
-	{
-			if (buf[index] == '#')
-			{
-				if (buf[index+1] == '#')
-					cnt++;
-				if (buf[index-1] == '#')
-					cnt++;
-				if (buf[index + 5] == '#')
-					cnt++;
-				if (buf[index - 5] == '#')
-					cnt++;
-			}
-		index++;
-	}
-	if (cnt == 6 || cnt == 8)
-		return (1);
 	return (-1);
 }
 

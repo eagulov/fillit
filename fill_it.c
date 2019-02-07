@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 12:39:22 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/06 14:55:25 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/07 14:13:26 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ int        ft_sqrt(int num)
     int    tmp;
     int    x;
 
-    tmp = 0;
+    tmp = 1;
     x = 1;
     if (num < 0)
         num = -num;
-    while (tmp != x)
+	if (num == 1)
+		return (1);
+    while (tmp >= x)
     {
         tmp = num / x;
         if (tmp == x)
@@ -112,17 +114,18 @@ static int		solve(t_tetr *tetr, char **map, int storona)
 void	fill_it(t_tetr *tetr,int cnt)
 {
 	char	**map;
-	int		x;
+	int		size_map;
 	t_tetr *tmp;
 
 	tmp = tetr;
-	x = ft_sqrt(cnt * 4);
-	map = create_map(x);
-	while (!solve(tetr, map, x))
+	size_map = ft_sqrt(cnt * 4);
+	map = create_map(size_map);
+	while (!solve(tetr, map, size_map))
 	{
-		free_map(map, x);
-		++x;
-		map = create_map(x);
+		free_map(map, size_map);
+		++size_map;
+		map = create_map(size_map);
 	}
 	ft_print_array(map);
+	free_map(map, size_map);
 } 
