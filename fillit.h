@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 11:56:15 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/06 15:00:15 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/06 17:14:00 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct 	s_tetr
 	char 	*data;
 	char 	letter;
 	t_coord *massiv;
-	// t_coord	min;
-	// t_coord max;
 	struct s_tetr *next;
 }	t_tetr;
 
@@ -48,9 +46,8 @@ void	fill_it(t_tetr *tetr,int cnt);
 int 	checker(char *buf);
 int		check_cnt_symb(char *buf);
 int		check_symbols(char *buf);
-void	cut_tetrimino(t_tetr *list);
-void	opener(char *source, char *buf);
+void	cut_tetrimino(t_tetr *list, char *buf);
+void	opener(char *source, char *buf, t_tetr *list, char **map);
 t_tetr	*add_list(t_tetr *list, char *buf, char c);
-// t_tetr	*cut_square(t_tetr *list);
 
 # endif

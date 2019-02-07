@@ -8,14 +8,14 @@ t_tetr	*add_list(t_tetr *list, char *buf, char c)
 	if (list == NULL)
 	{
 		new = (t_tetr *)malloc(sizeof(t_tetr));
-		new->data = ft_strdup(buf);
+		cut_tetrimino(new, buf);
 		new->next = NULL;
 		new->letter = c;
 		return (new);
 	}
 	tmp = list;
 	new = (t_tetr *)malloc(sizeof(t_tetr));
-	new->data = ft_strdup(buf);
+    cut_tetrimino(new, buf);
 	new->next = NULL;
 	while (list->next)
 		list = list->next;
@@ -42,7 +42,7 @@ void    get_coords(t_coord *first_hash, t_coord *massiv, int *j, int i)
 }
 
 
-void    cut_tetrimino(t_tetr *list)
+void    cut_tetrimino(t_tetr *list, char *buf)
 {
     int        i;//переменная для итерации по нашей карте(тетрамино)
     int        j;// -|- по нашему massiv в котором будут находиться наши #
@@ -55,9 +55,9 @@ void    cut_tetrimino(t_tetr *list)
     massiv = (t_coord *)malloc(sizeof(t_coord)* 4);//выделяем память только под наши 4 #, которые найдем
     first_hash->x = 6;
     first_hash->y = 6;
-    while (list->data[i])//поэлементная итерация нашего листа(list->data, потому что мы записываем наши листы в фу-ии add_list)
+    while (buf[i])//поэлементная итерация нашего листа(list->data, потому что мы записываем наши листы в фу-ии add_list)
     {
-	    if (list->data[i] == '#')
+	    if (buf[i] == '#')
             get_coords(first_hash, massiv, &j, i);
 		++i;
 	}
