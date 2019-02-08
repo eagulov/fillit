@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:19:42 by eagulov           #+#    #+#             */
-/*   Updated: 2018/12/26 14:29:33 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/07 16:42:56 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ float				my_fahrenheit_celsius(float fahrenheit);
 float				my_celsius_fahrenheit(float celsius);
 int					my_minimum(int a, int b);
 int					my_maximum(int a, int b);
-
+int					my_sqrt(int num);
 int					ft_toupper(int x);
 int					ft_tolower(int x);
 int					ft_isprint(int x);

@@ -6,7 +6,7 @@
 #    By: eagulov <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 15:29:55 by eagulov           #+#    #+#              #
-#    Updated: 2019/01/30 19:09:18 by eagulov          ###   ########.fr        #
+#    Updated: 2019/02/07 16:41:57 by eagulov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = my_314area.c \
 	  my_fahrenheit_celsius.c \
 	  my_celsius_fahrenheit.c \
 	  my_minimum.c \
+	  my_sqrt.c	\
 	  my_maximum.c \
 	  ft_toupper.c \
 	  ft_tolower.c \

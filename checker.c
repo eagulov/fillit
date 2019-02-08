@@ -6,13 +6,13 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 19:22:21 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/07 12:04:19 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/07 16:18:45 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int check_hash(char *buf)
+int	check_hash(char *buf)
 {
 	int index;
 	int cnt;
@@ -53,7 +53,7 @@ int	check_symbols(char *buf)
 	return (1);
 }
 
-int	check_cnt_symb(char *buf)
+int	cnt_symbols(char *buf)
 {
 	int i;
 	int cnt_hash;
@@ -79,9 +79,9 @@ int	check_cnt_symb(char *buf)
 	return (-1);
 }
 
-int checker(char *buf)
+int	checker(char *buf)
 {
-	if (check_cnt_symb(buf) && check_symbols(buf) && check_hash(buf))
+	if (cnt_symbols(buf) && check_symbols(buf) && check_hash(buf))
 		return (1);
 	return (-1);
 }
