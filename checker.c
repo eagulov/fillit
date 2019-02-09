@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 19:22:21 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/07 16:18:45 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/08 17:19:37 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_hash(char *buf)
 
 	index = 0;
 	cnt = 0;
-	while (index < 21)
+	while (index < 19)
 	{
 		if (buf[index] == '#')
 		{
@@ -36,7 +36,7 @@ int	check_hash(char *buf)
 	}
 	if (cnt == 6 || cnt == 8)
 		return (1);
-	return (-1);
+	return (0);
 }
 
 int	check_symbols(char *buf)
@@ -44,10 +44,10 @@ int	check_symbols(char *buf)
 	int i;
 
 	i = 0;
-	while (buf != '\0')
+	while (buf[i])
 	{
 		if (buf[i] != '.' && buf[i] != '#' && buf[i] != '\n')
-			return (-1);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -75,13 +75,15 @@ int	cnt_symbols(char *buf)
 		}
 		if (cnt_hash == 4 && cnt_dot == 12)
 			return (1);
+		return (0);
 	}
-	return (-1);
+	else
+		return (0);
 }
 
 int	checker(char *buf)
 {
 	if (cnt_symbols(buf) && check_symbols(buf) && check_hash(buf))
 		return (1);
-	return (-1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 18:45:20 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/07 16:32:49 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/09 15:09:40 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,56 @@ void	free_list(t_tetr *list)
 	while (list)
 	{
 		tmp = list->next;
-		free((void *)list->massiv);
+		free((void *)list->coords);
 		free(list);
 		list = tmp;
 	}
 }
 
-void	all_process(char *source, char *buf, t_tetr *list, char **map)
+void	check_and_write(int rest, char *buf, t_tetr **list, char c)
 {
-	int		fd;
+	if (rest == 20)
+		buf[20] = '\n';
+	buf[21] = '\0';/* be sure that the last symbol is '\0' in buf */
+	if (checker(buf) == 1)/* check validity of tetriminos */
+		*list = add_lists(*list, buf, c);/*              */
+	else
+		exit(write(1, "error\n", 6) ? 0 : 0);
+}
+
+void	all_process(int fd, char *buf, t_tetr *list)
+{
 	int		rest;
-	t_tetr	*tmp;
+	int		old_rest;
 	int		cnt;
 	char	c;
 
-	c = 'A';
-	cnt = 0;
-	fd = open(source, O_RDONLY);
-	list = NULL;
-	while ((rest = read(fd, buf, 21)) > 0)
+	old_rest = 0;
+	c = 'A';/* letter for each tetrimin, start from 'A' */
+	cnt = 0;/* counter (how many tetriminos) */
+	while ((rest = read(fd, buf, 21)))/* read file, return number of read */
 	{
-		buf[22] = '\0';
-		if (checker(buf) == 1)
-			list = add_list(list, buf, c);
+		check_and_write(rest, buf, &list, c);
 		cnt++;
 		c++;
+		old_rest = rest;
 	}
-	fill_it(list, cnt);
-	free_list(list);
 	close(fd);
+	if (rest != 0 || old_rest != 20)
+		exit(write(1, "error\n", 6) ? 0 : 0);
+	fill_it(list, cnt);/* send tetriminos on lists */
+	free_list(list);
 }
 
 int		main(int argc, char **argv)
 {
 	char	buf[22];
-	char	**map;
-	t_tetr	*list;
+	int		fd;
+	t_tetr	*list;/* create list, write all tetriminos on it from buf */
 
-	all_process(argv[1], buf, list, map);
+	list = NULL;
+	if ((fd = open(argv[1], O_RDONLY)) <= 0)
+		exit(write(1, "error\n", 6) ? 0 : 0);
+	all_process(fd, buf, list);
 	return (argc);
 }
