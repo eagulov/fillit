@@ -6,7 +6,7 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 11:56:15 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/09 12:44:09 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/09 18:21:08 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int					load_tetrimino(t_tetr *t, char **map, t_coord m_c,
 int					is_legal(t_tetr *t, t_coord m_c, int storona);
 int					is_empty(t_tetr *t, char **map, t_coord m_c);
 void				remove_tetrimino(t_tetr *t, char **map, t_coord m_c);
-void				print_array(char **array);
+void				print_final_map(char **map);
 void				free_map(char **map, int storona);
 
 #endif

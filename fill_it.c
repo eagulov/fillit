@@ -6,20 +6,20 @@
 /*   By: eagulov <eagulov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 12:39:22 by eagulov           #+#    #+#             */
-/*   Updated: 2019/02/09 12:49:01 by eagulov          ###   ########.fr       */
+/*   Updated: 2019/02/09 18:33:53 by eagulov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_array(char **array)
+void	print_final_map(char **map)
 {
 	int i;
 
 	i = 0;
-	while (array[i] != NULL)
+	while (map[i] != NULL)
 	{
-		ft_putstr(array[i]);
+		ft_putstr(map[i]);
 		ft_putchar('\n');
 		++i;
 	}
@@ -57,7 +57,7 @@ void	free_map(char **map, int storona)
 		ft_memdel((void **)&(map[i]));
 		i++;
 	}
-	ft_memdel((void **)&(map));
+	// ft_memdel((void **)&(map));
 	ft_memdel((void **)&map);
 }
 
@@ -102,6 +102,6 @@ void	fill_it(t_tetr *tetr, int cnt)/* getting lists with teriminos */
 		++storona;
 		map = create_map(storona);
 	}
-	print_array(map);
+	print_final_map(map);
 	free_map(map, storona);
 }
